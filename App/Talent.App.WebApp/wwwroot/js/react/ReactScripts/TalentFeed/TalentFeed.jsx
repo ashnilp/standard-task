@@ -22,7 +22,9 @@ export default class TalentFeed extends React.Component {
             watchlist: [],
             loaderData: loader,
             loadingFeedData: false,
-            companyDetails: null
+            companyDetails: null,
+            FirstName: '',
+            LastName: ''
         }
 
         this.init = this.init.bind(this);
@@ -39,6 +41,14 @@ export default class TalentFeed extends React.Component {
         //window.addEventListener('scroll', this.handleScroll);
         this.init()
     };
+
+    updateWithoutSave(firstName, lastName) {
+
+        this.setState({
+            FirstName: firstName,
+            LastName: lastName
+        })
+    }
 
    
     render() {
@@ -57,7 +67,16 @@ export default class TalentFeed extends React.Component {
                                 <div className="ui list">
                                     <div className="item">
                                         <div className="ui segments">
-                                            <TalentCard />
+                                            <div className="content">
+                                                <div className="ui segment">
+                                                    <i className="right floated star icon"></i>
+                                                    {this.state.FirstName} (Talent) {this.state.LastName}
+                                                </div>
+                                                
+                                             </div>
+                                            <TalentCard
+
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -74,3 +93,38 @@ export default class TalentFeed extends React.Component {
         )
     }
 }
+
+/*
+ * <div className="ui container">
+                    <div className="ui grid">
+                        <div className="row">
+                            <div className="four wide column">
+                                <div className="ui segments">
+                                    <CompanyProfile />
+                                </div>
+                            </div>
+                            <div className="eight wide column">
+
+                                <div className="ui list">
+                                    <div className="item">
+                                        <div className="ui segments">
+                                            <div className="content">
+                                                <i className="right floated star icon"></i>
+                                                Ru (Talent) Ng
+                                             </div>
+                                            <TalentCard
+
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="four wide column">
+                                <div className="ui segments">
+                                    <FollowingSuggestion />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ * */

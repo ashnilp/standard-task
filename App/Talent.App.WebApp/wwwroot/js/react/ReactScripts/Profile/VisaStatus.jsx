@@ -1,4 +1,5 @@
 ﻿import React from 'react'
+import Moment from 'react-moment';
 import { SingleInput } from '../Form/SingleInput.jsx';
 
 export default class VisaStatus extends React.Component {
@@ -63,6 +64,15 @@ export default class VisaStatus extends React.Component {
     render() {
 
         let visaStat = this.props.visaStatus
+        let visaExpDate = this.props.visaExpiryDate
+        if (visaStat == "" && visaStat == null && visaStat == undefined) {
+            visaStat = "";
+        }
+
+        if (visaExpDate == "" && visaExpDate == null && visaExpDate == undefined) {
+            visaExpDate = "";
+        }
+
         let display = ""
         let visaStatus = ["Citizen", "Permanent Resident", "Work Visa", "Student Visa"];
         var visa = visaStatus.map(x => <option key={x} value={x}> {x}</option>);
@@ -76,8 +86,8 @@ export default class VisaStatus extends React.Component {
                                 <label>Visa type</label>
                                     <select
                                         className="ui fluid dropdown"
-                                    lable="visaType"
-                                    value={this.props.visaStatus}
+                                        lable="visaType"
+                                        value={visaStat}
                                         name="visaStatus"
                                         onChange={this.handleOnChange}
                                         placeholder="Visa Status"
@@ -100,7 +110,7 @@ export default class VisaStatus extends React.Component {
                                     <select
                                         className="ui fluid dropdown"
                                         lable="visaType"
-                                        value={this.props.visaStatus}
+                                        value={visaStat}
                                         name="visaStatus"
                                         onChange={this.handleOnChange}
                                         placeholder="Visa Status"
@@ -122,7 +132,7 @@ export default class VisaStatus extends React.Component {
                             <select
                                 className="ui fluid dropdown"
                                 lable="Visa Type"
-                                value={this.props.visaStatus}
+                                value={visaStat}
                                 name="visaStatus"
                                 onChange={this.handleOnChange}
                                 placeholder="Visa Status"
@@ -131,29 +141,24 @@ export default class VisaStatus extends React.Component {
                                 {visa}
                             </select>
                         </div>
-                        <div className="field">
-                            <label>Visa expiry date</label>
-                            <SingleInput
-                                inputType="date"
-                                errorMessage="Date entered incorrect"
-                                name="visaExpiryDate"
-                                content={this.props.visaExpiryDate}
-                                controlFunc={this.handleChange}
-                                placeholder="Enter a phone number"
-                                isError={this.state.isError}
+                        
+                    <div>
+                            <label>Visa Expiry Date</label>
+                        <input
+                            type="date"
+                            name="visaExpiryDate"
+                            value={<Moment format="DD MMM, YYYY">visaExpDate </Moment>}
+                            onChange={this.handleChange}
                             />
                         </div>
-                        <div className="field">
+                    <div className="field">
+                            <label>-</label>
                             <button type="button" className="ui teal button" onClick={this.saveVisa}>Save</button>
                         </div>
                     </div>
                 </div>
         }
-    
-          
-        
-
-        return (
+    return (
             <div>
                 {display}
             </div>
@@ -162,7 +167,21 @@ export default class VisaStatus extends React.Component {
     }
 
    
-    /* renderEdit() {
+    /*
+     *<div className="field">
+                            <label>Visa expiry date</label>
+                            <SingleInput
+                            inputType="text"
+                            errorMessage="Date entered incorrect"
+                            name="visaExpiryDate"
+                            content={this.state.profileData.visaExpiryDate}
+                                controlFunc={this.handleChange}
+                                placeholder="Enter Date Manually"
+                                isError={this.state.isError}
+                            />
+                        </div>
+     * 
+     * renderEdit() {
 
         let visaStatus = ["Citizen", "Permanent Resident", "Work Visa", "Student Visa"];
 

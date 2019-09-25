@@ -30,8 +30,6 @@ export default class TalentStatus extends React.Component {
 
     handleOptionChange(event) {
 
-        console.log("Hello")
-        
 
         this.setState({
             profileData: {
@@ -53,13 +51,22 @@ export default class TalentStatus extends React.Component {
 
     render() {
 
-        let status = this.props.status ? this.props.status.status : ""
-        let availableDate = this.props.status ? this.props.status.availableDate : ""
-        let display = ""
-        console.log(this.props)
+        let status = this.props.status.status
+        let availableDate = this.props.status.availableDate
+
+        if (status == "" && status == null && status == undefined) {
+            status = "";
+        } else {
+            status = this.props.status.status
+        }
+
+        if (availableDate == "" && availableDate == null && availableDate == undefined) {
+            availableDate = "";
+        } else {
+            availableDate = this.props.status.availableDate
+        }
+
         
-
-
         return (
             <div className='row'>
                 <div className="ui sixteen wide column">
@@ -69,26 +76,26 @@ export default class TalentStatus extends React.Component {
                                 <label>Current Status</label>
                                 <div className="field">
                                     <div className="ui radio checkbox">
-                                        <input type="radio" name="status" value="Actively looking for a job" checked={this.props.status.status === "Actively looking for a job"} />
+                                        <input type="radio" name="status" value="Actively looking for a job" checked={status === "Actively looking for a job"} />
                                         <label>Actively looking for a job</label>
                                     </div>
                                 </div>
 
                                 <div className="field">
                                     <div className="ui radio checkbox">
-                                        <input type="radio" name="status" value="Not looking for a job at the moment" checked={this.props.status.status === "Not looking for a job at the moment"} />
+                                        <input type="radio" name="status" value="Not looking for a job at the moment" checked={status === "Not looking for a job at the moment"} />
                                         <label>Not looking for a job at the moment</label>
                                      </div>
                                 </div>
                                 <div className="field">
                                     <div className="ui radio checkbox">
-                                        <input type="radio" name="status" value="Currently employed but open to offers" checked={this.props.status.status === "Currently employed but open to offers"} />
+                                        <input type="radio" name="status" value="Currently employed but open to offers" checked={status === "Currently employed but open to offers"} />
                                         <label>Currently employed but open to offers</label>
                                     </div>
                                 </div>
                                 <div className="field">
                                     <div className="ui radio checkbox">
-                                        <input type="radio" name="status" value="Will be available on later date" checked={this.props.status.status === "Will be available on later date"} />
+                                        <input type="radio" name="status" value="Will be available on later date" checked={status === "Will be available on later date"} />
                                         <label>Will be available on later date</label>
                                     </div>
                                 </div>
