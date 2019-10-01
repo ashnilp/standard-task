@@ -148,14 +148,19 @@ export class Address extends React.Component {
         let countriesOptions = [];
         let citiesOptions = [];
         const selectedCountry = this.state.addressDetails.address.country;
-        const selectedCity = this.props.addressData.city;
+        const selectedCity = this.state.addressDetails.address.city;
         
 
         countriesOptions = Object.keys(Countries).map((x) => <option key={x} value={x}>{x}</option>);
 
         if (selectedCountry != "" && selectedCountry != null) {
+
+            console.log(selectedCountry)
+
             var popCities = ""
             popCities = Countries[selectedCountry].map(x => <option key={x} value={x}> {x}</option>);
+
+            console.log(popCities)
 
             citiesOptions = <span><select
                 className="ui dropdown"
@@ -217,7 +222,7 @@ export class Address extends React.Component {
                 <div>
                     <select className="ui right labeled dropdown"
                         placeholder="Country"
-                        defaultValue={this.props.addressData.country}
+                        defaultValue={this.state.addressDetails.address.country}
                         onChange={this.handleChange}
                         name="country">
 

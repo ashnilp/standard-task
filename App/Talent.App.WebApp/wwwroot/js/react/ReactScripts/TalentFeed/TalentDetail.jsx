@@ -17,7 +17,10 @@ export default class TalentDetail extends React.Component {
                 LastName: '',
                 VisaStatus: '',
                 Description: ''
-            }
+            },
+            currentEmployer: '',
+            visaStatus: '',
+            position: ''
         }
 
         this.updateWithoutSave = this.updateWithoutSave.bind(this)
@@ -40,16 +43,35 @@ export default class TalentDetail extends React.Component {
             },
             type: "GET",
             success: function (res) {
-                this.updateWithoutSave(res.data)
-            }.bind(this)
+                console.log("inside success")
+                //this.updateWithoutSave(res.data)
+            }.bind(this),
+            error: function (res, a, b) {
+                console.log(res)
+                console.log(a)
+                console.log(b)
+            }
         })
+
+        this.updateWithoutSave()
     }
 
     updateWithoutSave() {
-        let newProfile = Object.assign({}, this.state.profileData, newValues)
-        this.setState({
-            profileData: newProfile
-        }, () => console.log(this.state.profileData))
+        //let newProfile = Object.assign({}, this.state.profileData, newValues)
+        //if (newProfile == null && newProfile == undefined && newProfile == "") {
+            //dummy data
+            this.setState({
+                profileData: {
+                    FirstName: 'Ashnil',
+                    LastName: 'Prasad',
+                    VisaStatus: 'Pernament Resident',
+                    Description: 'Software Developer'
+                },
+                currentEmployer: 'ABC',
+                visaStatus: 'Citizen',
+                position: 'Software Developer'
+            }, () => console.log(this.state.profileData))
+        
     }
 
    
@@ -67,15 +89,15 @@ export default class TalentDetail extends React.Component {
                         <div className="description">Talent snapshot</div>
                         <div className="description">
                             <div>CURRENT EMPLOYER </div>
-                            <div>ABC </div>
+                            <div>{this.state.currentEmployer} </div>
                         </div>
                         <div className="description">
                             <div>VISA STATUS</div>
-                            <div>Citizen</div>
+                            <div>{this.state.visaStatus}</div>
                         </div>
                         <div className="description">
                             <div>POSITION</div>
-                            <div>Software Developer</div>
+                            <div>{this.state.position}</div>
                         </div>
                     </div>
                 </div>

@@ -16,9 +16,7 @@ export default class TalentStatus extends React.Component {
         this.state = {
             profileData: {
                 jobSeekingStatus: status
-            },
-            selectedOption: ""
-
+            }
         }
 
         this.handleOptionChange = this.handleOptionChange.bind(this)
@@ -51,19 +49,12 @@ export default class TalentStatus extends React.Component {
 
     render() {
 
-        let status = this.props.status.status
-        let availableDate = this.props.status.availableDate
+        let status = this.state.profileData.jobSeekingStatus.status;
 
         if (status == "" && status == null && status == undefined) {
             status = "";
         } else {
-            status = this.props.status.status
-        }
-
-        if (availableDate == "" && availableDate == null && availableDate == undefined) {
-            availableDate = "";
-        } else {
-            availableDate = this.props.status.availableDate
+            status = this.props.status.status;
         }
 
         
