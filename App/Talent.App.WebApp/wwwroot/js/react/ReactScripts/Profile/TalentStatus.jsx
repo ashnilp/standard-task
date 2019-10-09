@@ -21,10 +21,21 @@ export default class TalentStatus extends React.Component {
 
         this.handleOptionChange = this.handleOptionChange.bind(this)
         this.saveJobSeek = this.saveJobSeek.bind(this)
+        this.componentDidUpdate = this.componentDidUpdate.bind(this)
 
     }
 
-   
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                profileData: {
+                    jobSeekingStatus: this.props.status
+                }
+            }, () => console.log(this.state.profileData.jobSeekingStatus))
+        }
+
+    }
 
     handleOptionChange(event) {
 
@@ -35,9 +46,7 @@ export default class TalentStatus extends React.Component {
                     status: event.target.value
                 }
             }
-        }, () => this.saveJobSeek())
-
-        
+        }, () => this.saveJobSeek())  
     }
 
     saveJobSeek() {
@@ -50,13 +59,6 @@ export default class TalentStatus extends React.Component {
     render() {
 
         let status = this.state.profileData.jobSeekingStatus.status;
-
-        if (status == "" && status == null && status == undefined) {
-            status = "";
-        } else {
-            status = this.props.status.status;
-        }
-
         
         return (
             <div className='row'>
