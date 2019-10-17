@@ -5,8 +5,11 @@ export default class FollowingSuggestion extends React.Component {
     render() {
         return (
             <div className="content">
-                <div className="center aligned header">Follow Talent</div>
+                
                 <div className="ui items following-suggestion">
+                    <div className="item center aligned">
+                        <div className="header">Follow Talent</div>
+                    </div>
                     <div className="item">
                         <div className="ui image">
                             <img className="ui circular image" src="http://semantic-ui.com/images/avatar/small/jenny.jpg" />

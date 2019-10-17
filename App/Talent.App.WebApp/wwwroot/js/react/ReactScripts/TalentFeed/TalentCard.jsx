@@ -3,6 +3,7 @@ import ReactPlayer from 'react-player';
 import PropTypes from 'prop-types'
 import { Popup, Icon } from 'semantic-ui-react'
 import TalentDetail from '../TalentFeed/TalentDetail.jsx';
+import TalentCardDetail from '../TalentFeed/TalentCardDetail.jsx'
 
 export default class TalentCard extends React.Component {
     constructor(props) {
@@ -41,7 +42,7 @@ export default class TalentCard extends React.Component {
         return (
             <div className="ui items">
                 <div className="item">
-                    <ReactPlayer
+                    <TalentCardDetail
                     />
                 </div>
                 <div className="item">

@@ -23,8 +23,8 @@ export default class TalentFeed extends React.Component {
             loaderData: loader,
             loadingFeedData: false,
             companyDetails: null,
-            FirstName: 'Ru',
-            LastName: 'Ng'
+            FirstName: 'Ashnil',
+            LastName: 'Prasad'
         }
 
         this.init = this.init.bind(this);
